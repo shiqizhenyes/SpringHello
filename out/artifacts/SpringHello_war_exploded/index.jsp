@@ -37,6 +37,21 @@
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="TEST DELETE">
   </form><br>
-  <a href="hello/testParams?username=zack&age=10">test requestParam</a>
+  <a href="hello/testParams?username=zack&age=10">Test requestParam</a><br>
+  <a href="hello/testCookieValue">Test Cookie</a><br>
+
+
+  <form action="hello/testPojo" method="post">
+
+    <label>name:</label><input type="text" name="userName"><br>
+    <label>age:</label><input type="number" name="age"><br>
+    <label>sex:</label><input type="number" name="sex"><br>
+    <label>city:</label><input type="text" name="address.city"><br>
+    <button type="submit">提交</button>
+  </form>
+
+
+
+
   </body>
 </html>

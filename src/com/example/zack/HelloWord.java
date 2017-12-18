@@ -1,10 +1,7 @@
 package com.example.zack;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.tags.Param;
 
 @RequestMapping("/hello")
@@ -74,6 +71,23 @@ public class HelloWord {
                              @RequestParam(value = "age", required = false, defaultValue = "0") Integer age) {
 
         System.out.println("username:"+un+"age:"+age);
+        return SUCCESS;
+    }
+
+    @RequestMapping(value = "/testCookieValue")
+    public String testCookieValue(@CookieValue(value = "JSESSIONID") String jsion) {
+        System.out.println("JSESSIONID"+jsion);
+        return SUCCESS;
+    }
+
+    /**
+     * pojo 级联属性 springMvc 为pojo对象自动填值
+     * @param user
+     * @return
+     */
+    @RequestMapping(value = "/testPojo")
+    public String testPojo(User user) {
+        System.out.println("name:"+user.getUserName()+"city:"+user.getAddress().getCity());
         return SUCCESS;
     }
 }
