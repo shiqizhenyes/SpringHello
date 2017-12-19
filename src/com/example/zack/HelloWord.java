@@ -1,8 +1,22 @@
 package com.example.zack;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.tags.Param;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.Writer;
+import java.sql.Array;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Map;
 
 @RequestMapping("/hello")
 @Controller
@@ -88,6 +102,30 @@ public class HelloWord {
     @RequestMapping(value = "/testPojo")
     public String testPojo(User user) {
         System.out.println("name:"+user.getUserName()+"city:"+user.getAddress().getCity());
+        return SUCCESS;
+    }
+
+
+    @RequestMapping(value = "/testServletApi")
+    public void testServletApi(HttpServletRequest request, HttpServletResponse response, Writer writer) throws IOException {
+        System.out.println("request"+request+"response"+response);
+        writer.write("hello spring mvc");
+//        return SUCCESS;
+    }
+
+    @RequestMapping(value = "/testModelAndView")
+    public ModelAndView testModelAndView() {
+        String viewName = SUCCESS;
+        ModelAndView modelAndView = new ModelAndView(viewName);
+        modelAndView.addObject("time",new Date());
+        System.out.println("modelAndView" + modelAndView);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/testMap")
+    public String toString(Map<String,Object> map) {
+        map.put("names", Arrays.asList("tom","jerry","zack"));
+        System.out.println(map.getClass().getName());
         return SUCCESS;
     }
 }

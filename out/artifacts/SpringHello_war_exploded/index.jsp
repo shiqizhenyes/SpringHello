@@ -51,6 +51,9 @@
   </form>
 
 
+  <a href="hello/testServletApi">test Servlet Api</a>
+  <a href="hello/testModelAndView">test Model and View</a>
+  <a href="hello/testMap">test Map</a>
 
 
   </body>

@@ -13,7 +13,8 @@
 <body>
 
 <h1>请求成功</h1>
-<h2></h2>
+<h2>time:${requestScope.time}</h2>
+<h2>name:${requestScope.names}</h2>
 </body>
 
 </html>
